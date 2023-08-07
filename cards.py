@@ -1,12 +1,7 @@
-
 import requests 
 import os
 from bs4 import BeautifulSoup 
 from pprint import pprint
-
-
-  
-url = 'https://vgkami.com/final-fantasy-viii-triple-triad-cards-list/' 
 
 def imagedown(url,folder):
     try:
@@ -29,4 +24,4 @@ def imagedown(url,folder):
             im = requests.get(link)
             f.write(im.content)
 
-imagedown(url, 'cards')
+imagedown('https://vgkami.com/final-fantasy-viii-triple-triad-cards-list/', 'cards')
