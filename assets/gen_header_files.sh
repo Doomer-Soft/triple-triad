@@ -1,17 +1,11 @@
 #!/bin/bash
 
-
-
 # Function to convert a PNG file to a C header file using bin2header
 
 convert_to_header() {
-
     local png_file="$1"
-
     local header_name="${png_file%.png}.h"
-
     bin2header -n "${png_file%.png}" -o "$header_name" "$png_file"
-
 }
 
 
