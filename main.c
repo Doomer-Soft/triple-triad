@@ -54,10 +54,10 @@ input()
 		tmp = GetMousePosition();
 		int dx = mouse_pos.x - tmp.x;
 		int dy = mouse_pos.y - tmp.y;
-		if (!Vector2Equals(mouse_pos, tmp)) {
-			s.x -= dx;
-			s.y -= dy;
-		} 	
+		//if (!Vector2Equals(mouse_pos, tmp)) {
+		//	s.x -= dx;
+		//	s.y -= dy;
+		//} 	
 		mouse_pos.x = tmp.x;
 		mouse_pos.y = tmp.y;
 	}
@@ -83,8 +83,8 @@ void
 init()
 {
 	InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Triple-Triad");
-	SetWindowState(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
-	SetTraceLogLevel(LOG_ALL);
+	SetWindowState(FLAG_VSYNC_HINT | FLAG_WINDOW_RESIZABLE);
+	SetTraceLogLevel(LOG_NONE);
 }
 
 void
@@ -107,7 +107,7 @@ load_assets()
 
 		strcpy(concatenated, ASSET_PATH);
 		strcat(concatenated, CARD_NAMES[i]);
-		TraceLog(LOG_ALL, "%s", concatenated);
+		//TraceLog(LOG_ALL, "%s", concatenated);
 		memcpy(tmp_name, CARD_NAMES[i], strlen(CARD_NAMES[i]));
 		char* card_name = strtok(tmp_name, ".");
 		sprites[i] = new_sprite(card_name,concatenated);
@@ -119,7 +119,9 @@ drawing()
 {
 	BeginDrawing();
 		ClearBackground(BLACK);
-		//DrawTextureEx(sprites[2].tex, (Vector2){sprites[2].x, sprites[2].y}, 0 , 1.5, WHITE);
+		for (int i = 0; i < 110;i++) {
+			DrawTextureEx(sprites[i].tex, (Vector2){sprites[i].x, sprites[i].y}, 0 , 1.5, WHITE);
+		}
 	EndDrawing();
 }
 
